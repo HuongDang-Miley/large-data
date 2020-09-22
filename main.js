@@ -14,19 +14,12 @@
 // Email: yasemin.ozkok@example.com
 // Birthday: 02-27-1971
 
-// - Use the data array that is provided as the data you will be passing into the function.
-// - Look at the data in the output example and find properties in the data that match those types of outputs
-// - Create a function addressList that takes a parameter, data
-// - Return only the males OR only the females
-// - Use destructuring to parse the data if you can and output the data in the format listed above into the terminal
-// - If you cannot use destructuring parse the data in the way that you know how
-// - You will need to manipulate some of the data to get the formatted output, so use your vanilla js
-// - Remember, the data should output to the terminal
+
 
 
 // DATASET:
 
- let data = {
+let data = {
   results: [
     {
       gender: 'female',
@@ -177,3 +170,37 @@
   ],
   info: { seed: 'ed2c7d4d04121f12', results: 4, page: 1, version: '1.3' }
 }
+
+
+// - Use the data array that is provided as the data you will be passing into the function.
+// - Look at the data in the output example and find properties in the data that match those types of outputs
+// - Create a function addressList that takes a parameter, data
+// - Return only the males OR only the females
+// - Use destructuring to parse the data if you can and output the data in the format listed above into the terminal
+// - If you cannot use destructuring parse the data in the way that you know how
+// - You will need to manipulate some of the data to get the formatted output, so use your vanilla js
+// - Remember, the data should output to the terminal
+
+
+
+// Vanilla Js
+const addressList = (data) => {
+  let { results } = data
+  let female = results.filter((item) => item.gender === 'female')
+  let result = ''
+  for (person of female) {
+    result += `
+    ${person.name.title}. ${person.name.first} ${person.name.last}\n
+    ${person.location.street.number} ${person.location.street.name}\n
+    ${person.location.city}, ${person.location.state}\n
+    ${person.location.country} ${person.location.postcode}\n
+    Email: ${person.email}\n
+    Birthday: ${person.dob.date.slice(5,8)}${person.dob.date.slice(8,10)}-${person.dob.date.slice(0,4)}\n
+    `
+  }
+  return result
+}
+
+console.log(addressList(data))
+
+// working on object destructuring 
